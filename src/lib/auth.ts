@@ -3,8 +3,6 @@ import { Pool } from 'pg';
 import { customSession, jwt } from 'better-auth/plugins';
 import { sendEmail } from './utils/email';
 import { fetchUserRole } from './utils/fetch-roles';
-import { authClient } from './auth-client';
-import { da } from 'zod/v4/locales';
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -34,7 +32,7 @@ export const auth = betterAuth({
     }
   },
   emailAndPassword: {
-    requireEmailVerification: true,
+    // requireEmailVerification: true,
 
     enabled: true,
     sendResetPassword: async ({ user, url, token }) => {
